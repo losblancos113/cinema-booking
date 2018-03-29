@@ -1,8 +1,8 @@
 -- --------------------------------------------------------
 -- Host:                         127.0.0.1
--- Server version:               5.7.21-log - MySQL Community Server (GPL)
+-- Server version:               5.7.20 - MySQL Community Server (GPL)
 -- Server OS:                    Win64
--- HeidiSQL Version:             9.5.0.5196
+-- HeidiSQL Version:             9.4.0.5125
 -- --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -91,26 +91,6 @@ INSERT INTO `kehoachchieu` (`makehoachchieu`, `maphim`, `maphong`, `ngaychieu`, 
 	(2, 14, 2, '2018-03-15', '07:00:00', 0);
 /*!40000 ALTER TABLE `kehoachchieu` ENABLE KEYS */;
 
--- Dumping structure for table abcphim.khachhang
-DROP TABLE IF EXISTS `khachhang`;
-CREATE TABLE IF NOT EXISTS `khachhang` (
-  `makhachhang` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `hoten` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `diachi` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `sodienthoai` varchar(11) COLLATE utf8_unicode_ci NOT NULL,
-  `socmnd` varchar(15) COLLATE utf8_unicode_ci NOT NULL,
-  `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `matkhau` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `quyen` int(11) NOT NULL,
-  PRIMARY KEY (`makhachhang`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
--- Dumping data for table abcphim.khachhang: ~0 rows (approximately)
-/*!40000 ALTER TABLE `khachhang` DISABLE KEYS */;
-INSERT INTO `khachhang` (`makhachhang`, `hoten`, `diachi`, `sodienthoai`, `socmnd`, `email`, `matkhau`, `quyen`) VALUES
-	(1, 'Phan Anh Toại', 'Hà Nội\r\n', '1642784232', '174851259', 'toaiphan86@gmail.com', '123456', 0);
-/*!40000 ALTER TABLE `khachhang` ENABLE KEYS */;
-
 -- Dumping structure for table abcphim.loaiphim
 DROP TABLE IF EXISTS `loaiphim`;
 CREATE TABLE IF NOT EXISTS `loaiphim` (
@@ -125,6 +105,22 @@ INSERT INTO `loaiphim` (`maloaiphim`, `tenloaiphim`) VALUES
 	(2, 'Hài hước'),
 	(3, 'Tâm lý');
 /*!40000 ALTER TABLE `loaiphim` ENABLE KEYS */;
+
+-- Dumping structure for table abcphim.migrations
+DROP TABLE IF EXISTS `migrations`;
+CREATE TABLE IF NOT EXISTS `migrations` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `batch` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Dumping data for table abcphim.migrations: ~2 rows (approximately)
+/*!40000 ALTER TABLE `migrations` DISABLE KEYS */;
+INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
+	(1, '2014_10_12_000000_create_users_table', 1),
+	(2, '2014_10_12_100000_create_password_resets_table', 1);
+/*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
 
 -- Dumping structure for table abcphim.nhanvien
 DROP TABLE IF EXISTS `nhanvien`;
@@ -149,6 +145,19 @@ INSERT INTO `nhanvien` (`manhanvien`, `marap`, `hoten`, `diachi`, `sodienthoai`,
 	(1, 1, 'Phan Anh Tú', 'Thanh Xuân', '1658827223', '12312312', 'tuphan@gmail.com', '123456', 1);
 /*!40000 ALTER TABLE `nhanvien` ENABLE KEYS */;
 
+-- Dumping structure for table abcphim.password_resets
+DROP TABLE IF EXISTS `password_resets`;
+CREATE TABLE IF NOT EXISTS `password_resets` (
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  KEY `password_resets_email_index` (`email`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Dumping data for table abcphim.password_resets: ~0 rows (approximately)
+/*!40000 ALTER TABLE `password_resets` DISABLE KEYS */;
+/*!40000 ALTER TABLE `password_resets` ENABLE KEYS */;
+
 -- Dumping structure for table abcphim.phim
 DROP TABLE IF EXISTS `phim`;
 CREATE TABLE IF NOT EXISTS `phim` (
@@ -163,20 +172,22 @@ CREATE TABLE IF NOT EXISTS `phim` (
   `anhphim` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `daodien` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
   `trailer` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `trangthai` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `trangthai` tinyint(3) NOT NULL,
   PRIMARY KEY (`maphim`),
   KEY `phim_MaHangphim` (`mahangphim`) USING BTREE,
   KEY `phim_MaLoaiphim` (`maloaiphim`) USING BTREE,
   CONSTRAINT `phim_ibfk_1` FOREIGN KEY (`mahangphim`) REFERENCES `hangphim` (`mahangphim`),
   CONSTRAINT `phim_ibfk_2` FOREIGN KEY (`maloaiphim`) REFERENCES `loaiphim` (`maloaiphim`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- Dumping data for table abcphim.phim: ~3 rows (approximately)
 /*!40000 ALTER TABLE `phim` DISABLE KEYS */;
 INSERT INTO `phim` (`maphim`, `mahangphim`, `maloaiphim`, `tenphim`, `thoiluong`, `motaphim`, `dandienvien`, `ngaykhoichieu`, `anhphim`, `daodien`, `trailer`, `trangthai`) VALUES
-	(1, 2, 2, 'Tháng Năm Rực Rỡ ', '118 phút', '\r\n\r\nTháng Năm Rực Rỡ mang đến hai câu chuyện song song về những cô nữ sinh trẻ tuổi tràn đầy hoài bão và những người phụ nữ trưởng thành đã nếm trải qua cay ngọt cuộc đời. Phim quy tụ dàn mỹ nhân tài năng của hai thế hệ như Hồng Ánh, Thanh Hằng, Mỹ Duyên, Mỹ Uyên, Minh Tuyền… trong vai nhóm Ngựa Hoang trưởng thành và Hoàng Yến Chibi, Hoàng Oanh, Jun Vũ, Khổng Tú Quỳnh, Minh Thảo, Trịnh Thảo, Thanh Tú… trong vai nhóm Ngựa Hoang thời tuổi trẻ.\r\n\r\n', 'Jun Vũ, Khổng Tú Quỳnh, Hoàng Oanh, Hoàng Yến Chibi, Mỹ Duyên, Thanh Hằng, Hồng Ánh', '2018-03-09', 'abcphim/image/thangnamrucro.jpg', ' Nguyễn Quang Dũng ', 'https://www.youtube.com/embed/Q6jw7x0cVv8?rel=0&amp;showinfo=0', 'Đang chiếu'),
-	(14, 2, 3, 'Girls 2 - Những Cô Gái Và Găng Tơ ', '100 phút', '\r\n\r\nBữa tiệc độc thân của Xiwen (Trần Ý Hàm) được chính Bảo Sơn tổ chức tại một căn biệt thự xa hoa với đầy đủ các thú vui khác nhau. Trải qua cuộc vui “quên trời quên đất”, ba cô gái Xiwen, Kimmy, Jialan giật mình tỉnh dậy và thấy bị còng tay ở bờ biển, người phủ đầy cát và không mảnh vải che thân. Sau khi trốn thoát, ba cô gái tiếp tục lúng túng khi đang đầu bù, tóc rối và phải chạm mặt người đàn ông ngoại quốc, có thân hình vạm vỡ (Mike Tyson).\r\n', 'Mike Tyson, Trần Bảo Sơn', '2018-03-16', 'abcphim/image/nhungcogaigangto.jpg', ' Hoàng Chân Chân ', 'https://www.youtube.com/embed/twYVjEumImQ?rel=0&amp;showinfo=0', 'Sắp chiếu'),
-	(15, 2, 2, '10x10 - Tội Ác Sau Phòng Kín', '87 phút', '\r\n\r\nCô gái Cathy bị tên bắt cóc “bất đắc dĩ” Lewis tấn công ngay giữa ban ngày và mang về một căn phòng kín bí ẩn để tra khảo. Tại căn phòng kín này, những màn tra khảo - đấu trí giữa hai bên đã diễn ra. Liệu Lewis có đoạt được điều mà gã muốn? Liệu Cathy có trốn thoát ra khỏi căn phòng? Liệu đâu là sự thật ẩn giấu cuối cùng?\r\n', 'Suzi Ewing, Noel Clarke, Kelly Reilly, Luke Evans', '2018-03-16', 'abcphim/image/toiacsauphongkin.jpg', ' Suzi Ewing ', 'https://www.youtube.com/embed/mb-vepjPrFc?rel=0&amp;showinfo=0', 'Đang chiếu');
+	(1, 2, 2, 'Tháng Năm Rực Rỡ ', '118 phút', '\r\n\r\nTháng Năm Rực Rỡ mang đến hai câu chuyện song song về những cô nữ sinh trẻ tuổi tràn đầy hoài bão và những người phụ nữ trưởng thành đã nếm trải qua cay ngọt cuộc đời. Phim quy tụ dàn mỹ nhân tài năng của hai thế hệ như Hồng Ánh, Thanh Hằng, Mỹ Duyên, Mỹ Uyên, Minh Tuyền… trong vai nhóm Ngựa Hoang trưởng thành và Hoàng Yến Chibi, Hoàng Oanh, Jun Vũ, Khổng Tú Quỳnh, Minh Thảo, Trịnh Thảo, Thanh Tú… trong vai nhóm Ngựa Hoang thời tuổi trẻ.\r\n\r\n', 'Jun Vũ, Khổng Tú Quỳnh, Hoàng Oanh, Hoàng Yến Chibi, Mỹ Duyên, Thanh Hằng, Hồng Ánh', '2018-04-09', 'http://www.movienewsletters.net/photos/VNM_190665R1.jpg', ' Nguyễn Quang Dũng ', 'https://www.youtube.com/embed/Q6jw7x0cVv8?rel=0&amp;showinfo=0', 2),
+	(14, 2, 3, 'Girls 2 - Những Cô Gái Và Găng Tơ ', '100 phút', '\r\n\r\nBữa tiệc độc thân của Xiwen (Trần Ý Hàm) được chính Bảo Sơn tổ chức tại một căn biệt thự xa hoa với đầy đủ các thú vui khác nhau. Trải qua cuộc vui “quên trời quên đất”, ba cô gái Xiwen, Kimmy, Jialan giật mình tỉnh dậy và thấy bị còng tay ở bờ biển, người phủ đầy cát và không mảnh vải che thân. Sau khi trốn thoát, ba cô gái tiếp tục lúng túng khi đang đầu bù, tóc rối và phải chạm mặt người đàn ông ngoại quốc, có thân hình vạm vỡ (Mike Tyson).\r\n', 'Mike Tyson, Trần Bảo Sơn', '2018-03-16', 'https://vuviphim.com/wp-content/uploads/2016/08/Girl-2-Nh%E1%BB%AFng-C%C3%B4-G%C3%A1i-V%C3%A0-Gangster-2018-poster.jpg', ' Hoàng Chân Chân ', 'https://www.youtube.com/embed/twYVjEumImQ?rel=0&amp;showinfo=0', 1),
+	(15, 2, 2, '10x10 - Tội Ác Sau Phòng Kín', '87 phút', '\r\n\r\nCô gái Cathy bị tên bắt cóc “bất đắc dĩ” Lewis tấn công ngay giữa ban ngày và mang về một căn phòng kín bí ẩn để tra khảo. Tại căn phòng kín này, những màn tra khảo - đấu trí giữa hai bên đã diễn ra. Liệu Lewis có đoạt được điều mà gã muốn? Liệu Cathy có trốn thoát ra khỏi căn phòng? Liệu đâu là sự thật ẩn giấu cuối cùng?\r\n', 'Suzi Ewing, Noel Clarke, Kelly Reilly, Luke Evans', '2018-03-16', 'http://www.impawards.com/intl/uk/2018/posters/onezeroxonezero.jpg', ' Suzi Ewing ', 'https://www.youtube.com/embed/mb-vepjPrFc?rel=0&amp;showinfo=0', 1),
+	(16, 2, 2, 'Deadpool', '180 phut', 'Deadpool xoay quanh anh chàng Wade Wilson, một người bị ung thư vô phương cứu chữa bị thí nghiệm trở thành dị nhân với khả năng phục hồi siêu tốc giống Wolverine nhưng ưu việt hơn, mặc dù để lại sẹo sau cuộc thí nghiệm khiến anh trở nên xấu xí. Mất đi vẻ ngoài, người yêu, hạnh phúc, điều đó khiến anh bằng mọi giá tìm ra kẻ đã phá hoại cuộc đời anh.', 'Ryan Reynolds, Morena Baccarin, Ed Skrein, T. J. Miller, Gina Carano, Leslie Uggams, Brianna Hildebrand', '2018-03-29', 'https://upload.wikimedia.org/wikipedia/vi/thumb/4/46/Deadpool_poster.jpg/280px-Deadpool_poster.jpg', 'Tim Miller', 'https://www.youtube.com/watch?v=gtTfd6tISfw', 1),
+	(17, 2, 2, 'Pacific Rim: Trỗi Dậy', '180 phut', 'Lấy bối cảnh 10 năm sau những sự kiện đã diễn ra ở phần 1, Jake Pentecost – truyền nhân duy nhất của huyền thoại Stacker Pentecost đã thực hiện lời hứa với cha mình, gia nhập nhóm người điều khiển Jaeger gồm có Lambert (Scott Eastwood) và Amara chỉ mới 15 tuổi (Cailee Spaeny), cùng nhau xây dựng nên một chiến tuyến chống lại Kaiju. Cuộc xung đột toàn cầu kéo dài giữa những quái vật âm mưu phá hủy thế giới và những robot khổng lồ do con người chế tạo ra nhằm đánh bại lũ quái vật hứa hẹn sẽ là một cuộc chiến cam go và kịch tính khi lũ quái vật giờ đây đã tiến hóa vượt bậc cả về thể lực và trí lực.', 'John Boyega, Scott Eastwood, Jing Tian, Cailee Spaeny, Rinko Kikuchi, Burn Gorman, Adria Arjona, Charlie Day', '2018-03-30', 'http://www.movienewsletters.net/photos/VNM_190665R1.jpg', 'Steven S. DeKnight', 'https://www.youtube.com/watch?v=gtTfd6tISfw', 1);
 /*!40000 ALTER TABLE `phim` ENABLE KEYS */;
 
 -- Dumping structure for table abcphim.phong
@@ -272,6 +283,27 @@ INSERT INTO `thanhpho` (`mathanhpho`, `tenthanhpho`) VALUES
 	(3, 'Đà Nẵng');
 /*!40000 ALTER TABLE `thanhpho` ENABLE KEYS */;
 
+-- Dumping structure for table abcphim.users
+DROP TABLE IF EXISTS `users`;
+CREATE TABLE IF NOT EXISTS `users` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `diachi` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `sodienthoai` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `socmnd` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `users_email_unique` (`email`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Dumping data for table abcphim.users: ~0 rows (approximately)
+/*!40000 ALTER TABLE `users` DISABLE KEYS */;
+/*!40000 ALTER TABLE `users` ENABLE KEYS */;
+
 -- Dumping structure for table abcphim.ve
 DROP TABLE IF EXISTS `ve`;
 CREATE TABLE IF NOT EXISTS `ve` (
@@ -281,9 +313,7 @@ CREATE TABLE IF NOT EXISTS `ve` (
   `ngaymuave` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`mave`),
   KEY `ve_MaKhachhang` (`makhachhang`) USING BTREE,
-  KEY `ve_Makehoachchieu` (`makehoachchieu`) USING BTREE,
-  CONSTRAINT `ve_ibfk_1` FOREIGN KEY (`makehoachchieu`) REFERENCES `kehoachchieu` (`makehoachchieu`),
-  CONSTRAINT `ve_ibfk_2` FOREIGN KEY (`makhachhang`) REFERENCES `khachhang` (`makhachhang`)
+  KEY `ve_Makehoachchieu` (`makehoachchieu`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- Dumping data for table abcphim.ve: ~0 rows (approximately)
