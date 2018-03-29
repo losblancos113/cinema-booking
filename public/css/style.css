@@ -1110,6 +1110,7 @@ p.fexi_header_para1 a i {
 #video8 iframe {
 	display: block;
 	width: 100%;
+	max-height: 500px;
 }
 
 #play,
@@ -1127,7 +1128,7 @@ p.fexi_header_para1 a i {
 	width: 64px;
 	height: 64px;
 	cursor: pointer;
-	background: url('../../../public/images/play-button.png') no-repeat 0px 0px;
+	background: url('/images/play-button.png') no-repeat 0px 0px;
 	background-size: auto, cover;
 	z-index: 9;
 }
@@ -1139,7 +1140,7 @@ p.fexi_header_para1 a i {
 	width: 64px;
 	height: 64px;
 	cursor: pointer;
-	background: url('../../../public/images/play-button.png') no-repeat 0px 0px;
+	background: url('/images/play-button.png') no-repeat 0px 0px;
 	background-size: auto, cover;
 	z-index: 9;
 }
@@ -3016,7 +3017,7 @@ ul.bottom-links-agile li a {
 		width: 64px;
 		height: 64px;
 		cursor: pointer;
-		background: url(../../../public/images/play-button.png) no-repeat 0px 0px;
+		background: url(/images/play-button.png) no-repeat 0px 0px;
 		background-size: auto, cover;
 		z-index: 9;
 	}

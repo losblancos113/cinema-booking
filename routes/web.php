@@ -19,3 +19,7 @@ Route::get('/movie/{id}', [
     'as' => 'movie.detail',
    'uses' => 'MovieController@detail'
 ]);
+Route::get('/cine',[
+    'as' => 'cinema.select',
+    'uses' => 'CineController@cineSelect'
+]);

@@ -13,9 +13,7 @@
     <link href="css/font-awesome.css" rel="stylesheet">
     <script type="text/javascript" src="js/modernizr-2.6.2.min.js"></script>
     <!--/web-fonts-->
-    <link href='//fonts.googleapis.com/css?family=Tangerine:400,700' rel='stylesheet' type='text/css'>
-    <link href="//fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900" rel="stylesheet">
-    <link href='//fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/css?family=Lato|Montserrat|Tangerine" rel="stylesheet">
     <!--//web-fonts-->
 @endsection
 

@@ -1,20 +1,18 @@
 @extends("layout.master")
 @section("title")
-    Trang chủ
+    $movie->tenphim
 @endsection
 @section("css-lib")
     <!-- pop-up -->
-    <link href="css/popuo-box.css" rel="stylesheet" type="text/css" media="all"/>
+    <link href="/css/popuo-box.css" rel="stylesheet" type="text/css" media="all"/>
     <!-- //pop-up -->
-    <link href="css/easy-responsive-tabs.css" rel='stylesheet' type='text/css'/>
-    <link rel="stylesheet" type="text/css" href="css/zoomslider.css"/>
-    <link rel="stylesheet" type="text/css" href="css/style.css"/>
-    <link href="css/font-awesome.css" rel="stylesheet">
-    <script type="text/javascript" src="js/modernizr-2.6.2.min.js"></script>
+    <link href="/css/easy-responsive-tabs.css" rel='stylesheet' type='text/css'/>
+    <link rel="stylesheet" type="text/css" href="/css/zoomslider.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/style.css"/>
+    <link href="/css/font-awesome.css" rel="stylesheet">
+    <script type="text/javascript" src="/js/modernizr-2.6.2.min.js"></script>
     <!--/web-fonts-->
-    <link href='//fonts.googleapis.com/css?family=Tangerine:400,700' rel='stylesheet' type='text/css'>
-    <link href="//fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900" rel="stylesheet">
-    <link href='//fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/css?family=Lato|Montserrat|Tangerine" rel="stylesheet">
     <!--//web-fonts-->
 @endsection
 @section("content-inner-section")
@@ -33,24 +31,23 @@
         <div class="agile_featured_movies">
             <div class="inner-agile-w3l-part-head">
                 <h3 class="w3l-inner-h-title">{{ $movie->tenphim }}</h3>
-                <p class="w3ls_head_para">$movie->motaphim</p>
+                {{--<p class="w3ls_head_para">$movie->motaphim</p>--}}
             </div>
             <div class="latest-news-agile-info">
                 <div class="col-md-8 latest-news-agile-left-content">
                     <div class="single video_agile_player">
 
                         <div class="video-grid-single-page-agileits">
-                            <div data-video="f2Z65fobH2I" id="video"><img src="images/1.jpg" alt=""
+                            <div data-video="{{ getYoutubeId($movie->trailer) }}" id="video"><img src="{{ $movie->anhphim }}" alt=""
                                                                           class="img-responsive"/></div>
                         </div>
-                        <h4>Force 2 | Official Trailer | John Abraham, Sonakshi Sinha and Tahir Raj Bhasin</h4>
+                        <h4>{{ $movie->daodien }} | {{ $movie->dandienvien }}</h4>
                     </div>
-                    <div> thông tin bộ phim</div>
+                    <div>{{ $movie->motaphim }}</div>
 
 
                     <div class="response">
-
-
+                        <a href="{{ route('cinema.select') }}" class="btn btn-primary btn-lg">Mua Vé</a>
                     </div>
 
                 </div>
@@ -60,7 +57,7 @@
                     <h4 class="side-t-w3l-agile">Latest <span>Trailer</span></h4>
                     <div class="video_agile_player sidebar-player">
                         <div class="video-grid-single-page-agileits">
-                            <div data-video="fNKUgX8PhMA" id="video1"><img src="images/22.jpg" alt=""
+                            <div data-video="fNKUgX8PhMA" id="video1"><img src="/images/22.jpg" alt=""
                                                                            class="img-responsive">
                                 <div id="play"></div>
                             </div>
@@ -93,7 +90,7 @@
                     <h4 class="side-t-w3l-agile">Latest <span>Trailer</span></h4>
                     <div class="video_agile_player sidebar-player">
                         <div class="video-grid-single-page-agileits">
-                            <div data-video="fNKUgX8PhMA" id="video1"><img src="images/22.jpg" alt=""
+                            <div data-video="fNKUgX8PhMA" id="video1"><img src="/images/22.jpg" alt=""
                                                                            class="img-responsive">
                                 <div id="play"></div>
                             </div>

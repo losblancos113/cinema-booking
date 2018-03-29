@@ -10,14 +10,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
         function hideURLbar(){ window.scrollTo(0,1); } </script>
     <!-- //for-mobile-apps -->
-    <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
     <!-- pop-up -->
     @yield("css-lib")
 </head>
 <body>
 <!--/main-header-->
 <!--/banner-section-->
-<div id="demo-1" data-zs-src='["images/2.jpg", "images/1.jpg", "images/3.jpg","images/4.jpg"]' data-zs-overlay="dots">
+<div id="demo-1" data-zs-src='["/images/2.jpg", "/images/1.jpg", "/images/3.jpg","/images/4.jpg"]' data-zs-overlay="dots">
     <div class="demo-inner-content">
         <!--/header-w3l-->
         <div class="header-w3-agileits" id="home">
@@ -31,12 +31,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <h1><a href="index.html"><span>M</span>ovies <span>P</span>ro</a></h1>
+                        <h1><a href="/"><span>M</span>ovies <span>P</span>ro</a></h1>
                     </div>
                     <!-- navbar-header -->
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav">
-                            <li class="active"><a href="index.html">Home</a></li>
+                            <li class="active"><a href="/">Home</a></li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Phim <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
@@ -219,7 +219,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <h4>Phim đang chiếu</h4>
                 <div class="footer-grid1">
                     <div class="footer-grid1-left">
-                        <a href="single.html"><img src="images/1.jpg" alt=" " class="img-responsive"></a>
+                        <a href="single.html"><img src="/images/1.jpg" alt=" " class="img-responsive"></a>
                     </div>
                     <div class="footer-grid1-right">
                         <a href="single.html">eveniet ut molesti</a>
@@ -229,7 +229,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 </div>
                 <div class="footer-grid1">
                     <div class="footer-grid1-left">
-                        <a href="single.html"><img src="images/2.jpg" alt=" " class="img-responsive"></a>
+                        <a href="single.html"><img src="/images/2.jpg" alt=" " class="img-responsive"></a>
                     </div>
                     <div class="footer-grid1-right">
                         <a href="single.html">earum rerum tenet</a>
@@ -240,7 +240,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <div class="footer-grid1">
 
                     <div class="footer-grid1-left">
-                        <a href="single.html"><img src="images/4.jpg" alt=" " class="img-responsive"></a>
+                        <a href="single.html"><img src="/images/4.jpg" alt=" " class="img-responsive"></a>
                     </div>
                     <div class="footer-grid1-right">
                         <a href="single.html">eveniet ut molesti</a>
@@ -250,7 +250,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 </div>
                 <div class="footer-grid1">
                     <div class="footer-grid1-left">
-                        <a href="single.html"><img src="images/3.jpg" alt=" " class="img-responsive"></a>
+                        <a href="single.html"><img src="/images/3.jpg" alt=" " class="img-responsive"></a>
                     </div>
                     <div class="footer-grid1-right">
                         <a href="single.html">earum rerum tenet</a>
@@ -264,22 +264,22 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <div class="col-md-2 footer-grid">
                 <h4 class="b-log"><a href="index.html"><span>M</span>ovies <span>P</span>ro</a></h4>
                 <div class="footer-grid-instagram">
-                    <a href="single.html"><img src="images/m1.jpg" alt=" " class="img-responsive"></a>
+                    <a href="single.html"><img src="/images/m1.jpg" alt=" " class="img-responsive"></a>
                 </div>
                 <div class="footer-grid-instagram">
-                    <a href="single.html"><img src="images/m2.jpg" alt=" " class="img-responsive"></a>
+                    <a href="single.html"><img src="/images/m2.jpg" alt=" " class="img-responsive"></a>
                 </div>
                 <div class="footer-grid-instagram">
-                    <a href="single.html"><img src="images/m3.jpg" alt=" " class="img-responsive"></a>
+                    <a href="single.html"><img src="/images/m3.jpg" alt=" " class="img-responsive"></a>
                 </div>
                 <div class="footer-grid-instagram">
-                    <a href="single.html"><img src="images/m4.jpg" alt=" " class="img-responsive"></a>
+                    <a href="single.html"><img src="/images/m4.jpg" alt=" " class="img-responsive"></a>
                 </div>
                 <div class="footer-grid-instagram">
-                    <a href="single.html"><img src="images/m5.jpg" alt=" " class="img-responsive"></a>
+                    <a href="single.html"><img src="/images/m5.jpg" alt=" " class="img-responsive"></a>
                 </div>
                 <div class="footer-grid-instagram">
-                    <a href="single.html"><img src="images/m6.jpg" alt=" " class="img-responsive"></a>
+                    <a href="single.html"><img src="/images/m6.jpg" alt=" " class="img-responsive"></a>
                 </div>
 
                 <div class="clearfix"> </div>
@@ -305,11 +305,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 </div>
 <div class="w3agile_footer_copy">
-    <p>© 2017 Movies Pro</a></p>
+    <p>© 2017 Movies Pro<</p>
 </div>
 <a href="#home" id="toTop" class="scroll" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
 
-<script src="js/jquery-1.11.1.min.js"></script>
+<script src="/js/jquery-1.11.1.min.js"></script>
 <!-- Dropdown-Menu-JavaScript -->
 <script>
     $(document).ready(function(){
@@ -328,10 +328,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- //Dropdown-Menu-JavaScript -->
 
 
-<script type="text/javascript" src="js/jquery.zoomslider.min.js"></script>
+<script type="text/javascript" src="/js/jquery.zoomslider.min.js"></script>
 <!-- search-jQuery -->
-<script src="js/main.js"></script>
-<script src="js/simplePlayer.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/simplePlayer.js"></script>
 <script>
     $("document").ready(function() {
         $("#video").simplePlayer();
@@ -354,7 +354,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </script>
 
 <!-- pop-up-box -->
-<script src="js/jquery.magnific-popup.js" type="text/javascript"></script>
+<script src="/js/jquery.magnific-popup.js" type="text/javascript"></script>
 <!--//pop-up-box -->
 
 {{--<div id="small-dialog1" class="mfp-hide">--}}
@@ -379,7 +379,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
     });
 </script>
-<script src="js/easy-responsive-tabs.js"></script>
+<script src="/js/easy-responsive-tabs.js"></script>
 <script>
     $(document).ready(function () {
         $('#horizontalTab').easyResponsiveTabs({
@@ -402,8 +402,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         });
     });
 </script>
-<link href="css/owl.carousel.css" rel="stylesheet" type="text/css" media="all">
-<script src="js/owl.carousel.js"></script>
+<link href="/css/owl.carousel.css" rel="stylesheet" type="text/css" media="all">
+<script src="/js/owl.carousel.js"></script>
 <script>
     $(document).ready(function() {
         $("#owl-demo").owlCarousel({
@@ -422,8 +422,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </script>
 
 <!--/script-->
-<script type="text/javascript" src="js/move-top.js"></script>
-<script type="text/javascript" src="js/easing.js"></script>
+<script type="text/javascript" src="/js/move-top.js"></script>
+<script type="text/javascript" src="/js/easing.js"></script>
 
 <script type="text/javascript">
     jQuery(document).ready(function($) {
@@ -449,7 +449,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     });
 </script>
 <!--end-smooth-scrolling-->
-<script src="js/bootstrap.js"></script>
+<script src="/js/bootstrap.js"></script>
 
 </body>
 </html>
