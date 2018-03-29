@@ -11,6 +11,11 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [
+    'as' => 'home.index',
+   'uses' => 'HomeController@index'
+]);
+Route::get('/movie/{id}', [
+    'as' => 'movie.detail',
+   'uses' => 'MovieController@detail'
+]);
