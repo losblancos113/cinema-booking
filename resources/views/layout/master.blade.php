@@ -450,6 +450,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </script>
 <!--end-smooth-scrolling-->
 <script src="/js/bootstrap.js"></script>
-
+@yield("js")
 </body>
 </html>

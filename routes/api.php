@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
-
+use App\Rap as Rap;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -15,4 +15,11 @@ use Illuminate\Http\Request;
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
+});
+Route::get('/getCineByDistrict/{id}', function ($id){
+    if($id != null){
+        return Rap::where('maquanhuyen', $id)->get();
+    }else{
+        return null;
+    }
 });

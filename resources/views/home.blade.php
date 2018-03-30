@@ -94,3 +94,5 @@
     </div>
     <!--//requested-movies-->
 @endsection
+@section("js")
+@endsection
