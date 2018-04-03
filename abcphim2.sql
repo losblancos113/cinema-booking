@@ -87,8 +87,8 @@ CREATE TABLE IF NOT EXISTS `kehoachchieu` (
 -- Dumping data for table abcphim.kehoachchieu: ~2 rows (approximately)
 /*!40000 ALTER TABLE `kehoachchieu` DISABLE KEYS */;
 INSERT INTO `kehoachchieu` (`makehoachchieu`, `maphim`, `maphong`, `ngaychieu`, `giobatdau`, `giave`) VALUES
-	(1, 1, 4, '2018-03-23', '12:57:00', 0),
-	(2, 14, 2, '2018-03-15', '07:00:00', 0);
+	(1, 1, 1, '2018-04-03', '23:57:00', 0),
+	(2, 14, 2, '2018-04-04', '23:00:00', 0);
 /*!40000 ALTER TABLE `kehoachchieu` ENABLE KEYS */;
 
 -- Dumping structure for table abcphim.loaiphim

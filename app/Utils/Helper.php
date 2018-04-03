@@ -13,3 +13,12 @@ function getYoutubeId($url)
         return 'notfound';
     }
 }
+
+function composeDataForViewByCine($rawdata){
+    if ($rawdata != null && count($rawdata) > 0){
+        $grouped = array_group_by($rawdata, 'ngaychieu', 'maphim');
+        return $grouped;
+    }else {
+        return $rawdata;
+    }
+}
