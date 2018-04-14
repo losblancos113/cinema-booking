@@ -17,6 +17,15 @@ function getYoutubeId($url)
 function composeDataForViewByCine($rawdata){
     if ($rawdata != null && count($rawdata) > 0){
         $grouped = array_group_by($rawdata, 'ngaychieu', 'maphim');
+        foreach ($grouped as $date => $valueDate){
+            foreach ($valueDate as $maphim => $shows){
+                $phim = $shows[0]->phim;
+                $maphimnew = new stdClass();
+                $maphimnew->phim = $phim;
+                $maphimnew->shows = $shows;
+                $grouped[$date][$maphim] = $maphimnew;
+            }
+        }
         return $grouped;
     }else {
         return $rawdata;

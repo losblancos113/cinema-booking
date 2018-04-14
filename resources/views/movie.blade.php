@@ -1,6 +1,6 @@
 @extends("layout.master")
 @section("title")
-    $movie->tenphim
+    {{$movie->tenphim}}
 @endsection
 @section("css-lib")
     <!-- pop-up -->

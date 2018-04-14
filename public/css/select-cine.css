@@ -23,6 +23,30 @@
     margin-top: 20px;
     font-size: 25px;
 }
+
+.phim-show-box {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.phim-img {
+    width: 176px;
+    height: 260px;
+    display: inline-block;
+}
+.ten-phim {
+    font-size: 26px;
+    font-weight: bold;
+    margin: 10px;
+}
+.phim-show-time {
+    display: inline-block;
+    margin-left: 20px;
+}
+
+.phim-img img{
+    width: 176px;
+    height: 260px;
+}
 /* Loading css */
 .lds-hourglass {
     display: inline-block;

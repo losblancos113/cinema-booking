@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title@yield("title")</title>
+    <title>@yield("title")</title>
     <!-- for-mobile-apps -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -101,12 +101,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <div class="w3_agilits_banner_bootm">
     <div class="w3_agilits_inner_bottom">
         <div class="col-md-6 wthree_agile_login">
+            @if (session()->has('user'))
+                Hello {{ session()->get('user')->name }}
+            @else
             <ul>
                 <li><i class="fa fa-phone" aria-hidden="true"></i> (+000) 009 455 4088</li>
                 <li><a href="#" class="login"  data-toggle="modal" data-target="#myModal4">Login</a></li>
                 <li><a href="#" class="login reg"  data-toggle="modal" data-target="#myModal5">Register</a></li>
-
             </ul>
+            @endif
         </div>
 
     </div>
@@ -122,7 +125,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                 <h4>Login</h4>
                 <div class="login-form">
-                    <form action="#" method="post">
+                    <form method="POST" action="{{ route('login') }}">
+                        @csrf
                         <input type="email" name="email" placeholder="E-mail" required="">
                         <input type="password" name="password" placeholder="Password" required="">
                         <div class="tp">

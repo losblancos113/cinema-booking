@@ -24,16 +24,116 @@ CREATE TABLE IF NOT EXISTS `ghe` (
   `tenghe` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `maphong` int(10) unsigned NOT NULL,
   `trangthai` int(10) unsigned NOT NULL,
+  `hang` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `soghe` int(11) NOT NULL,
   PRIMARY KEY (`maghe`),
   KEY `ghe_MaPhong` (`maphong`) USING BTREE,
   CONSTRAINT `ghe_ibfk_1` FOREIGN KEY (`maphong`) REFERENCES `phong` (`maphong`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=324 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Dumping data for table abcphim.ghe: ~2 rows (approximately)
+-- Dumping data for table abcphim.ghe: ~100 rows (approximately)
 /*!40000 ALTER TABLE `ghe` DISABLE KEYS */;
-INSERT INTO `ghe` (`maghe`, `tenghe`, `maphong`, `trangthai`) VALUES
-	(1, 'A1', 1, 0),
-	(2, 'A2', 1, 0);
+INSERT INTO `ghe` (`maghe`, `tenghe`, `maphong`, `trangthai`, `hang`, `soghe`) VALUES
+	(224, '1_1', 1, 1, '1', 1),
+	(225, '1_2', 1, 1, '1', 2),
+	(226, '1_3', 1, 0, '1', 3),
+	(227, '1_4', 1, 0, '1', 4),
+	(228, '1_5', 1, 0, '1', 5),
+	(229, '1_6', 1, 0, '1', 6),
+	(230, '1_7', 1, 0, '1', 7),
+	(231, '1_8', 1, 0, '1', 8),
+	(232, '1_9', 1, 0, '1', 9),
+	(233, '1_10', 1, 0, '1', 10),
+	(234, '2_1', 1, 0, '2', 1),
+	(235, '2_2', 1, 0, '2', 2),
+	(236, '2_3', 1, 0, '2', 3),
+	(237, '2_4', 1, 0, '2', 4),
+	(238, '2_5', 1, 0, '2', 5),
+	(239, '2_6', 1, 0, '2', 6),
+	(240, '2_7', 1, 0, '2', 7),
+	(241, '2_8', 1, 0, '2', 8),
+	(242, '2_9', 1, 0, '2', 9),
+	(243, '2_10', 1, 0, '2', 10),
+	(244, '3_1', 1, 0, '3', 1),
+	(245, '3_2', 1, 0, '3', 2),
+	(246, '3_3', 1, 0, '3', 3),
+	(247, '3_4', 1, 0, '3', 4),
+	(248, '3_5', 1, 0, '3', 5),
+	(249, '3_6', 1, 0, '3', 6),
+	(250, '3_7', 1, 0, '3', 7),
+	(251, '3_8', 1, 0, '3', 8),
+	(252, '3_9', 1, 0, '3', 9),
+	(253, '3_10', 1, 0, '3', 10),
+	(254, '4_1', 1, 0, '4', 1),
+	(255, '4_2', 1, 0, '4', 2),
+	(256, '4_3', 1, 0, '4', 3),
+	(257, '4_4', 1, 0, '4', 4),
+	(258, '4_5', 1, 0, '4', 5),
+	(259, '4_6', 1, 0, '4', 6),
+	(260, '4_7', 1, 0, '4', 7),
+	(261, '4_8', 1, 0, '4', 8),
+	(262, '4_9', 1, 0, '4', 9),
+	(263, '4_10', 1, 0, '4', 10),
+	(264, '5_1', 1, 0, '5', 1),
+	(265, '5_2', 1, 0, '5', 2),
+	(266, '5_3', 1, 0, '5', 3),
+	(267, '5_4', 1, 0, '5', 4),
+	(268, '5_5', 1, 0, '5', 5),
+	(269, '5_6', 1, 0, '5', 6),
+	(270, '5_7', 1, 0, '5', 7),
+	(271, '5_8', 1, 0, '5', 8),
+	(272, '5_9', 1, 0, '5', 9),
+	(273, '5_10', 1, 0, '5', 10),
+	(274, '6_1', 1, 0, '6', 1),
+	(275, '6_2', 1, 0, '6', 2),
+	(276, '6_3', 1, 0, '6', 3),
+	(277, '6_4', 1, 0, '6', 4),
+	(278, '6_5', 1, 0, '6', 5),
+	(279, '6_6', 1, 0, '6', 6),
+	(280, '6_7', 1, 0, '6', 7),
+	(281, '6_8', 1, 0, '6', 8),
+	(282, '6_9', 1, 0, '6', 9),
+	(283, '6_10', 1, 0, '6', 10),
+	(284, '7_1', 1, 0, '7', 1),
+	(285, '7_2', 1, 0, '7', 2),
+	(286, '7_3', 1, 0, '7', 3),
+	(287, '7_4', 1, 0, '7', 4),
+	(288, '7_5', 1, 0, '7', 5),
+	(289, '7_6', 1, 0, '7', 6),
+	(290, '7_7', 1, 0, '7', 7),
+	(291, '7_8', 1, 0, '7', 8),
+	(292, '7_9', 1, 0, '7', 9),
+	(293, '7_10', 1, 0, '7', 10),
+	(294, '8_1', 1, 0, '8', 1),
+	(295, '8_2', 1, 0, '8', 2),
+	(296, '8_3', 1, 0, '8', 3),
+	(297, '8_4', 1, 0, '8', 4),
+	(298, '8_5', 1, 0, '8', 5),
+	(299, '8_6', 1, 0, '8', 6),
+	(300, '8_7', 1, 0, '8', 7),
+	(301, '8_8', 1, 0, '8', 8),
+	(302, '8_9', 1, 0, '8', 9),
+	(303, '8_10', 1, 0, '8', 10),
+	(304, '9_1', 1, 0, '9', 1),
+	(305, '9_2', 1, 0, '9', 2),
+	(306, '9_3', 1, 0, '9', 3),
+	(307, '9_4', 1, 0, '9', 4),
+	(308, '9_5', 1, 0, '9', 5),
+	(309, '9_6', 1, 0, '9', 6),
+	(310, '9_7', 1, 0, '9', 7),
+	(311, '9_8', 1, 0, '9', 8),
+	(312, '9_9', 1, 0, '9', 9),
+	(313, '9_10', 1, 0, '9', 10),
+	(314, '10_1', 1, 0, '10', 1),
+	(315, '10_2', 1, 0, '10', 2),
+	(316, '10_3', 1, 0, '10', 3),
+	(317, '10_4', 1, 0, '10', 4),
+	(318, '10_5', 1, 0, '10', 5),
+	(319, '10_6', 1, 0, '10', 6),
+	(320, '10_7', 1, 0, '10', 7),
+	(321, '10_8', 1, 0, '10', 8),
+	(322, '10_9', 1, 0, '10', 9),
+	(323, '10_10', 1, 0, '10', 10);
 /*!40000 ALTER TABLE `ghe` ENABLE KEYS */;
 
 -- Dumping structure for table abcphim.giao_dich
@@ -87,8 +187,8 @@ CREATE TABLE IF NOT EXISTS `kehoachchieu` (
 -- Dumping data for table abcphim.kehoachchieu: ~2 rows (approximately)
 /*!40000 ALTER TABLE `kehoachchieu` DISABLE KEYS */;
 INSERT INTO `kehoachchieu` (`makehoachchieu`, `maphim`, `maphong`, `ngaychieu`, `giobatdau`, `giave`) VALUES
-	(1, 1, 1, '2018-04-03', '23:57:00', 0),
-	(2, 14, 2, '2018-04-04', '23:00:00', 0);
+	(1, 1, 1, '2018-04-14', '23:57:00', 75000),
+	(2, 14, 2, '2018-04-15', '23:00:00', 120000);
 /*!40000 ALTER TABLE `kehoachchieu` ENABLE KEYS */;
 
 -- Dumping structure for table abcphim.loaiphim
@@ -290,18 +390,20 @@ CREATE TABLE IF NOT EXISTS `users` (
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `diachi` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `sodienthoai` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `socmnd` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `diachi` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `sodienthoai` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `socmnd` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `users_email_unique` (`email`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Dumping data for table abcphim.users: ~0 rows (approximately)
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
+INSERT INTO `users` (`id`, `name`, `email`, `password`, `diachi`, `sodienthoai`, `socmnd`, `remember_token`, `created_at`, `updated_at`) VALUES
+	(1, 'Hoàng Minh Trí', 'hmtmail1@gmail.com', '$2y$10$kpG.sh.8hF03Rsit/uHyQ.Y5A3EvWE/rkefFGkOvx6UW2h2VrqJPm', NULL, NULL, NULL, 'tGUIYM1zBcm5FMOqw3YpdpFaesFVKohrlvGXKDbwsivwfDSMcRkJVt7nNylw', '2018-04-07 14:57:43', '2018-04-07 14:57:43');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 
 -- Dumping structure for table abcphim.ve

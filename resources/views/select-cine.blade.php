@@ -1,6 +1,6 @@
 @extends("layout.master")
 @section("title")
-    $movie->tenphim
+    Chọn Rạp
 @endsection
 @section("css-lib")
     <!-- pop-up -->
@@ -83,8 +83,17 @@
     <script src="/js/jquery.blockUI.js">
     </script>
     <script>
+        var selectedCine = {};
+        var cinemasList = [];
         function handleCineClick(element) {
             var idCine = $(element).attr('idCine');
+            selectedCine = cinemasList.find(function (cine) {
+               if (cine.marap == idCine){
+                   return true;
+               }else {
+                   return false;
+               }
+            });
             $.blockUI({ message: $('#loadingRipple') ,
                 css: {
                     backgroundColor: 'unset',
@@ -94,8 +103,8 @@
             var promise = getShowByCine(idCine);
             promise.then(function (res) {
                 console.log(res.data);
-                $('#tenRap').text('CGV');
-                $('#diaChiRap').text('123 sdasc');
+                $('#tenRap').text(selectedCine.tenrap);
+                $('#diaChiRap').text(selectedCine.diachirap);
                 $('#show-container').show();
                 renderListShow(res.data);
                 $.unblockUI();
@@ -106,9 +115,11 @@
             var countDate = 0;
             var colapseClass = '';
             var ariaExpanded = '';
+            var colapseIn = '';
             for (let date in data){
                 colapseClass = (countDate > 0) ? 'class="collapsed"' : '';
                 ariaExpanded = (countDate > 0) ? 'false' : 'true';
+                colapseIn = (countDate > 0) ? '' : 'in';
                 html+= '<div class="panel panel-default">\n' +
                     '                        <div class="panel-heading" role="tab" id="heading'+countDate+'">\n' +
                     '                            <h4 class="panel-title">\n' +
@@ -116,17 +127,30 @@
                     '                                </a>\n' +
                     '                            </h4>\n' +
                     '                        </div>\n' +
-                    '                        <div id="collapse'+countDate+'" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading'+countDate+'">\n' +
-                    '                            <div class="panel-body">\n' +
-                    '                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven\'t heard of them accusamus labore sustainable VHS.\n' +
-                    '                            </div>\n' +
-                    '                        </div>\n' +
-                    '                    </div>';
+                    '                        <div id="collapse'+countDate+'" class="panel-collapse collapse '+ colapseIn +'" role="tabpanel" aria-labelledby="heading'+countDate+'">\n' +
+                    '                            <div class="panel-body">\n';
+
                 let objByDate = data[date];
                 for (let maphim in objByDate){
-                    let show = objByDate[maphim];
-
+                    let objByMaPhim = objByDate[maphim];
+                    let phim = objByMaPhim.phim;
+                    let shows = objByMaPhim.shows;
+                    html+= '<div class="phim-show-box">';
+                    html+= '<div class="ten-phim">'+ phim.tenphim +'</div>';
+                    html+= '<div class="phim-box">';
+                    html+= '<div class="phim-img"><img src="'+ phim.anhphim +'"></div>';
+                    html+= '<div class="phim-show-time">'
+                    shows.forEach(show => {
+                        html+= '<a href="cine/seat/' + show.makehoachchieu + '" class="btn btn-default">'+ show.giobatdau +'</a>';
+                    });
+                    html+= '</div>';
+                    html+= '</div>';
+                    html+= '</div>';
                 }
+                html +='                            </div>\n' +
+                    '                        </div>\n' +
+                    '                    </div>';
+
                 countDate++;
             }
             $('#accordion').html(html);
@@ -146,6 +170,7 @@
             var promise = getCine(maQuanHuyen);
             promise.then(function (res) {
                 if (res.data != 500){
+                    cinemasList = res.data;
                     renderListCinema(res.data);
                 }else{
                     return null;

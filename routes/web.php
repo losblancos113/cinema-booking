@@ -23,3 +23,11 @@ Route::get('/cine',[
     'as' => 'cinema.select',
     'uses' => 'CineController@cineSelect'
 ]);
+Route::get('/cine/seat/{makehoach}',[
+    'as' => 'seat.select',
+    'uses' => 'CineController@seatSelect'
+]);
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/logout', 'HomeController@doLogout')->name('logout');
