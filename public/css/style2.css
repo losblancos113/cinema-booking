@@ -140,6 +140,8 @@ div.seatCharts-seat {
 	}
 div.seatCharts-row {
 	height: 35px;
+	display: flex;
+	justify-content: center;
 	}
 div.seatCharts-seat.available {
 	background-color: #949494;

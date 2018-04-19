@@ -1,6 +1,6 @@
 @extends("layout.master")
 @section("title")
-    $movie->tenphim
+    Chọn Ghế: {{$show->phims()->tenphim}}
 @endsection
 @section("css-lib")
     <!-- pop-up -->
@@ -23,23 +23,23 @@
         </div>
         <div class="booking-details">
             <ul class="book-left">
-                <li>Movie </li>
-                <li>Time </li>
+                <li>Tên phim </li>
+                <li>Thời gian </li>
                 <li>Tickets</li>
-                <li>Total</li>
-                <li>Seats :</li>
+                <li>Tổng số</li>
+                <li>Chỗ đã chọn :</li>
             </ul>
             <ul class="book-right">
                 <li>: {{ $show->phims()->tenphim }}</li>
                 <li>: {{ $show->ngaychieu." ".$show->giobatdau }}</li>
                 <li>: <span id="counter">0</span></li>
-                <li>: <b><i>$</i><span id="total">0</span></b></li>
+                <li>: <b><i></i><span id="total">0</span></b> VND</li>
             </ul>
             <div class="clear"></div>
             <ul id="selected-seats" class="scrollbar scrollbar1"></ul>
 
 
-            <button class="checkout-button">Book Now</button>
+            <button class="checkout-button">Thanh Toán</button>
             <div id="legend"></div>
         </div>
         <div style="clear:both"></div>
@@ -74,7 +74,7 @@
                 },
                 click: function () { //Click event
                     if (this.status() == 'available') { //optional seat
-                        $('<li>Row'+(this.settings.row+1)+' Seat'+this.settings.label+'</li>')
+                        $('<li>Hàng '+(this.settings.row+1)+' Ghế số '+this.settings.label+'</li>')
                             .attr('id', 'cart-item-'+this.settings.id)
                             .data('seatId', this.settings.id)
                             .appendTo($cart);
