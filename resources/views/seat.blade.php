@@ -38,14 +38,17 @@
             <div class="clear"></div>
             <ul id="selected-seats" class="scrollbar scrollbar1"></ul>
 
-
-            <button class="checkout-button">Thanh Toán</button>
+            <form id="formCheckOut" action="/payment/checkout" method="post">
+                @csrf
+            </form>
+            <button onclick="checkOut()" class="checkout-button">Thanh Toán</button>
             <div id="legend"></div>
         </div>
         <div style="clear:both"></div>
     </div>
 @endsection
 @section("js")
+    <script src="/js/axios.min.js"></script>
     <script src="/js/jquery.seat-charts.js"></script>
     <script type="text/javascript">
         var price = {!! $show->giave !!}; //price
@@ -116,6 +119,24 @@
         }
         function getSoldSeats() {
             return seats.filter(seat => seat.trangthai !== 0).map(seat => seat.tenghe);
+        }
+        function checkOut() {
+            var selectedSeatName = [];
+            $('#selected-seats li').each(function () {
+                console.log(this);
+               var seatName = $(this).data('seatId');
+                selectedSeatName.push(seatName);
+            });
+            var selectedSeatId = getSeatIdFromSeatName(selectedSeatName);
+            console.log(selectedSeatId);
+            var inputKeHoach = $("<input>").attr("type", "hidden").attr("name","makehoach").val("{{ $show->makehoachchieu }}");
+            var inputMaKH = $("<input>").attr("type", "hidden").attr("name","makhachhang").val("{{ session()->get('user')->id }}");
+            var inputGheDat = $("<input>").attr("type", "hidden").attr("name","ghedat").val(JSON.stringify(selectedSeatId));
+            $('#formCheckOut').append($(inputGheDat)).append($(inputKeHoach)).append($(inputMaKH));
+            $('#formCheckOut').submit();
+        }
+        function getSeatIdFromSeatName(seatNames) {
+            return seats.filter(seat => $.inArray(seat.tenghe, seatNames) != -1).map(seat => seat.maghe);
         }
     </script>
     <script src="/js/jquery.nicescroll.js"></script>

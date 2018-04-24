@@ -11,10 +11,13 @@
 |
 */
 
-Route::get('/', [
-    'as' => 'home.index',
-   'uses' => 'HomeController@index'
-]);
+//Route::get('/', [
+//    'as' => 'home.index',
+//   'uses' => 'HomeController@index'
+//]);
+Route::get('/', function (){
+    return File::get(public_path().'/baokim_249e53d0f0c53b14.html');
+});
 Route::get('/movie/{id}', [
     'as' => 'movie.detail',
    'uses' => 'MovieController@detail'
@@ -27,6 +30,11 @@ Route::get('/cine/seat/{makehoach}',[
     'as' => 'seat.select',
     'uses' => 'CineController@seatSelect'
 ]);
+Route::post('/payment/checkout',[
+   'as' => 'payment.checkout',
+   'uses' => 'PaymentController@selectPaymentMethod'
+]);
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
