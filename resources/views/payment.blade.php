@@ -120,6 +120,7 @@
                              style="color: red; font-size: 20px; font-weight: bold">{{ $giao_dich->tong_tien }}</div>
                     </div>
                 </div>
+                <input type="hidden" name="totalAmount" value="{{ $giao_dich->tong_tien }}" >
                 <button type="submit" style="margin-top: 20px" class="btn btn-warning btn-lg btn-block">Xác Nhận Thanh Toán</button>
             </div>
             <div style="clear: both"></div>
