@@ -8,4 +8,5 @@ class GiaoDich extends Model
 {
     //
     protected $table = "giao_dich";
+    protected $primaryKey = "magd";
 }

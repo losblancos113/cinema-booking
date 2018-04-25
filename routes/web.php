@@ -11,13 +11,13 @@
 |
 */
 
-//Route::get('/', [
-//    'as' => 'home.index',
-//   'uses' => 'HomeController@index'
-//]);
-Route::get('/', function (){
-    return File::get(public_path().'/nganluong_3f02c0f1369c9647fb1d09209ed4bf98.html');
-});
+Route::get('/', [
+    'as' => 'home.index',
+   'uses' => 'HomeController@index'
+]);
+//Route::get('/', function (){
+//    return File::get(public_path().'/nganluong_3f02c0f1369c9647fb1d09209ed4bf98.html');
+//});
 Route::get('/movie/{id}', [
     'as' => 'movie.detail',
    'uses' => 'MovieController@detail'
@@ -39,6 +39,22 @@ Route::post('/payment/processCheckout',[
     'as' => 'payment.processcheckout',
     'uses' => 'PaymentController@processCheckout'
 ]);
+
+Route::get('/payment/info/{codegiaodich}', [
+    'as' => 'payment.info',
+    'uses' => 'PaymentController@info'
+]);
+
+Route::get('/payment/error/{codegiaodich}', [
+    'as' => 'payment.error',
+    'uses' => 'PaymentController@error'
+]);
+
+Route::get('/user/{id}/transaction_history', [
+    'as' => 'user.transaction_history',
+    'uses' => 'UserController@transaction_history'
+]);
+
 
 Auth::routes();
 

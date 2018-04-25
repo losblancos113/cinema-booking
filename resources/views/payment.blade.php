@@ -77,13 +77,13 @@
                 <div class="radio">
                     <label>
                         <input type="radio" name="paymentMethod" id="baoKim" value="1" checked>
-                        Bảo Kim
+                        <img src="https://www.baokim.vn/cdn/x_developer/module/baokim_btn/thanhtoanantoan-l.png"/>
                     </label>
                 </div>
                 <div class="radio">
                     <label>
                         <input type="radio" name="paymentMethod" id="nganLuong" value="2">
-                        Ngân Lượng
+                        <img src="https://www.nganluong.vn//css/newhome/img/button/safe-pay-3.png"/>
                     </label>
                 </div>
             </div>
@@ -121,6 +121,7 @@
                     </div>
                 </div>
                 <input type="hidden" name="totalAmount" value="{{ $giao_dich->tong_tien }}" >
+                <input type="hidden" name="codegiaodich" value="{{ $giao_dich->codegiaodich }}">
                 <button type="submit" style="margin-top: 20px" class="btn btn-warning btn-lg btn-block">Xác Nhận Thanh Toán</button>
             </div>
             <div style="clear: both"></div>

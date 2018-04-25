@@ -3,18 +3,19 @@
 /**
  *
  *		Phiên bản: 0.1
- *		Tên lớp: BaoKimPayment
- *		Chức năng: Tích hợp thanh toán qua baokim.vn cho các merchant site có đăng ký API
+ *		Tên lớp: Payment
+ *		Chức năng: Tích hợp thanh toán qua baokim.vn,nganluong.vn cho các merchant site có đăng ký API
  *						- Xây dựng URL chuyển thông tin tới baokim.vn để xử lý việc thanh toán cho merchant site.
  *						- Xác thực tính chính xác của thông tin đơn hàng được gửi về từ baokim.vn.
  *
  */
 namespace App\Utils;
 
-class BaoKimPayment
+class Payment
 {
 	// URL checkout của baokim.vn
 	private $baokim_url = 'https://baokim.vn/payment/order/version11';
+	private $nganluong_url = "https://www.nganluong.vn/button_payment.php";
 
 	// Mã merchante site
 //	private $merchant_id = '647';	// Biến này được baokim.vn cung cấp khi bạn đăng ký merchant site
@@ -24,7 +25,8 @@ class BaoKimPayment
 	private $secure_pass = '327bd9d2c19f751f'; // Biến này được baokim.vn cung cấp khi bạn đăng ký merchant site
 //	private $secure_pass = 'ae543c080ad91c23'; // Biến này được baokim.vn cung cấp khi bạn đăng ký merchant site
 
-    private $email = "hmtmail1@gmail.com";
+    private $baokim_email = "hmtmail1@gmail.com";
+    private $nganluong_email = "hmtmail1@gmail.com";
 
     /**
      * Cấu hình phương thức thanh toán với các tham số
@@ -71,7 +73,7 @@ class BaoKimPayment
         $params = array(
             'merchant_id'       => strval($this->merchant_id),
             'order_id'          => strval($orderCode),
-            'business'          => strval($this->email),
+            'business'          => strval($this->baokim_email),
             'total_amount'      => strval($totalAmount),
             'shipping_fee'      => strval('0'),
             'tax_fee'           => strval('0'),
@@ -129,6 +131,34 @@ class BaoKimPayment
         ksort($params);
         $str_to_hash = implode('',$params);
         return hash_hmac("sha1", $str_to_hash, $this->secure_pass, $raw_output=TRUE);
+    }
+
+    //https://www.nganluong.vn/button_payment.php?receiver=(Email chính tài khoản nhận tiền)&product_name=(Mã đơn đặt hàng)&price=(Tổng giá trị)&return_url=(URL thanh toán thành công)&comments=(Ghi chú về đơn hàng)
+    public function createNganLuongUrl($orderCode, $totalAmount, $returnUrl, $comments){
+        $params = array(
+            'receiver'       => strval($this->nganluong_email),
+            'product_name'   => strval($orderCode),
+            'price'          => strval($totalAmount),
+            'return_url'     => strval($returnUrl),
+            'comments'       => strval($comments)
+        );
+
+        $redirect_url = $this->nganluong_url;
+        if (strpos($redirect_url, '?') === false) {
+            $redirect_url .= '?';
+        } else if (substr($redirect_url, strlen($redirect_url) - 1, 1) != '?' && strpos($redirect_url, '&') === false) {
+            // Nếu biến $redirect_url có '?' nhưng không kết thúc bằng '?' và có chứa dấu '&' thì bổ sung vào cuối
+            $redirect_url .= '&';
+        }
+        // Tạo đoạn url chứa tham số
+        $url_params = '';
+        foreach ($params as $key => $value) {
+            if ($url_params == '')
+                $url_params .= $key . '=' . urlencode($value);
+            else
+                $url_params .= '&' . $key . '=' . urlencode($value);
+        }
+        return $redirect_url . $url_params;
     }
 }
 ?>
