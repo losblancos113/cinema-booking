@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Ghe as Ghe;
 use App\KeHoachChieu;
 use App\Phong;
+use App\Utils\BaoKimPayment;
 
 class PaymentController extends Controller
 {
@@ -33,7 +34,8 @@ class PaymentController extends Controller
 
     public function processCheckout(Request $request){
         if ($request->isMethod("post")){
-            return redirect('');
+            $urlBaoKim = BaoKimPayment::createRequestUrl(69,"hmtmail1@gmail.com", 70000, 0, 0, "", "http://abcphim.site", "http://abcphim.site/a", "http://abcphim.site/b");
+            return redirect($urlBaoKim);
         }
     }
 }

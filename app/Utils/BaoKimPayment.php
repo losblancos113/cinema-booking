@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 
 /**
  *	
@@ -9,6 +9,7 @@
  *						- Xác thực tính chính xác của thông tin đơn hàng được gửi về từ baokim.vn.
  *		
  */
+namespace App\Utils;
 
 class BaoKimPayment 
 {

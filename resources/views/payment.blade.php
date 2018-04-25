@@ -70,7 +70,7 @@
         Thanh Toán
     </div>
     <div class="row-tt" id="tt-checkout-container">
-        <form id="formCheckOut" action="/payment/processCheckout">
+        <form id="formCheckOut" action="/payment/processCheckout" method="post">
             @csrf
             <div id="tt-checkout-method" class="pull-left">
                 <h2>Chọn phương thức thanh toán:</h2>
@@ -120,7 +120,7 @@
                              style="color: red; font-size: 20px; font-weight: bold">{{ $giao_dich->tong_tien }}</div>
                     </div>
                 </div>
-                <button style="margin-top: 20px" class="btn btn-warning btn-lg btn-block">Xác Nhận Thanh Toán</button>
+                <button type="submit" style="margin-top: 20px" class="btn btn-warning btn-lg btn-block">Xác Nhận Thanh Toán</button>
             </div>
             <div style="clear: both"></div>
         </form>

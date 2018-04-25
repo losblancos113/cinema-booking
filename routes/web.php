@@ -35,6 +35,11 @@ Route::post('/payment/checkout',[
    'uses' => 'PaymentController@selectPaymentMethod'
 ]);
 
+Route::post('/payment/processCheckout',[
+    'as' => 'payment.processcheckout',
+    'uses' => 'PaymentController@processCheckout'
+]);
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
