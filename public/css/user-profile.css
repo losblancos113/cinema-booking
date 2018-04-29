@@ -1,0 +1,14 @@
+.user-profile-menu{
+    width: 200px;
+    height: 100%;
+}
+.user-profile-content{
+    width: calc(100% - 200px);
+    height: 100%;
+}
+
+.user-profile-container{
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+}

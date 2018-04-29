@@ -55,6 +55,15 @@ Route::get('/user/{id}/transaction_history', [
     'uses' => 'UserController@transaction_history'
 ]);
 
+Route::get('/user/info', [
+    'as' => 'user.info',
+    'uses' => 'UserController@user_info'
+]);
+
+Route::put('/user/update', [
+    'as' => 'user.update',
+    'uses' => 'UserController@update'
+]);
 
 Auth::routes();
 

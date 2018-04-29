@@ -75,11 +75,13 @@ class PaymentController extends Controller
         //check url return valid
         $urlReturn = $request->url();
         $isURLVerified = false;
+        $paymentMethod = -1;
         if (strpos($urlReturn, "checksum") !== false){
             //baokim
-
+            $paymentMethod = 1;
         } else{
             //ngan luong
+            $paymentMethod = 2;
             $payment = new NLPayment();
             $params = $request->input();
             $isURLVerified = $payment->verifyPaymentUrl($params["transaction_info"], $params["order_code"], $params["price"], $params["payment_id"], $params["payment_type"], $params["error_text"], $params["secure_code"]);
@@ -87,21 +89,33 @@ class PaymentController extends Controller
         }
 //        if ($referer)
         if ($isURLVerified) {
-
-            //update trang thai giao dich
-            $giaodich = GiaoDich::where('codegiaodich', $codgiaodich)->first();
-            $giaodich->trangthai = 1;
-            $giaodich->save();
-
-            $ghe_da_dat = OrderDetail::where('codegiaodich', $codgiaodich)->get();
-
-            //update trang thai ghe da ban
-            foreach ($ghe_da_dat as $ghe) {
-                Ghe::where('maghe', $ghe->maghe)
-                    ->update(['trangthai' => 1]);
+            //check trang thai thanh toán
+            $paymentSuccess = false;
+            if ($paymentMethod == 1){
+                //baokim
+            }else if ($paymentMethod == 2){
+                //ngan luong
+                if ($params["error_text"] == ""){
+                    $paymentSuccess = true;
+                }
             }
 
-            return view('payment_sucess');
+            if ($paymentSuccess){
+                //update trang thai giao dich
+                $giaodich = GiaoDich::where('codegiaodich', $codgiaodich)->first();
+                $giaodich->trangthai = 1;
+                $giaodich->save();
+
+                $ghe_da_dat = OrderDetail::where('codegiaodich', $codgiaodich)->get();
+
+                //update trang thai ghe da ban
+                foreach ($ghe_da_dat as $ghe) {
+                    Ghe::where('maghe', $ghe->maghe)
+                        ->update(['trangthai' => 1]);
+                }
+            }
+            $user = session()->get("user");
+            return redirect('/user/'.$user->id.'/transaction_history');
         }else{
             return redirect("/payment/error/".$codgiaodich);
         }

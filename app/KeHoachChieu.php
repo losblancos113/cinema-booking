@@ -7,9 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class KeHoachChieu extends Model
 {
     protected $table = "kehoachchieu";
+    protected $primaryKey = "makehoachchieu";
 
     public function phims(){
-        return Movie::where('maphim', $this->maphim)->first();
+        return Movie::find($this->maphim);
     }
 
 }
