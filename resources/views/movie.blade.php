@@ -21,7 +21,7 @@
             <ul>
                 <li><a href="index.html">Home</a><i>//</i></li>
 
-                <li>Single</li>
+                <li>{{ Route::currentRouteName() }}</li>
             </ul>
         </div>
     </div>
@@ -47,7 +47,7 @@
 
 
                     <div class="response">
-                        <a href="{{ route('cinema.select') }}" class="btn btn-primary btn-lg">Mua Vé</a>
+                        <a href="{{ route('cinema.movie.select', ['idMovie' => $movie->maphim]) }}" class="btn btn-primary btn-lg">Mua Vé</a>
                     </div>
 
                 </div>

@@ -16,6 +16,14 @@ class CineController extends Controller
         ]);
     }
 
+    public function cineSelectByMovie($idMovie){
+        $cities = ThanhPho::all();
+        return view('select-cine',[
+            'cities' => $cities,
+            'idMovie' => $idMovie
+        ]);
+    }
+
     public function seatSelect($makehoach){
         if (Auth::check()){
             $show = KeHoachChieu::where('makehoachchieu', $makehoach)->first();

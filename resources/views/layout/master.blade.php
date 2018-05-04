@@ -45,30 +45,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                     <div class="clearfix"></div>
                                 </ul>
                             </li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Rạp Phim <b class="caret"></b></a>
-                                <ul class="dropdown-menu multi-column columns-3">
-                                    <li>
-                                        <div class="col-sm-4">
-                                            <ul class="multi-column-dropdown">
-                                                <li><a href="genre.html">Hà Nội</a></li>
-                                                <li><a href="genre.html">Hải Dương</a></li>
-                                                <li><a href="genre.html">Thanh Hóa</a></li>
-                                                <li><a href="genre.html">Quảng Ninh</a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="col-sm-4">
-                                            <ul class="multi-column-dropdown">
-                                                <li><a href="genre.html">Đà Nẵng</a></li>
-                                                <li><a href="genre.html">Nha Trang</a></li>
-                                                <li><a href="genre.html">TP Hồ Chí Minh</a></li>
-                                                <li><a href="genre.html">Vũng Tàu</a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="clearfix"></div>
-                                    </li>
-                                </ul>
-                            </li>
+                            <li><a href="{{ route("cinema.select") }}">Rạp Chiếu</a></li>
                             <li><a href="contact.html">Liên Hệ</a></li>
                         </ul>
 

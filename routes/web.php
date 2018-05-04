@@ -26,6 +26,10 @@ Route::get('/cine',[
     'as' => 'cinema.select',
     'uses' => 'CineController@cineSelect'
 ]);
+Route::get('/cine/{idMovie}',[
+    'as' => 'cinema.movie.select',
+    'uses' => 'CineController@cineSelectByMovie'
+]);
 Route::get('/cine/seat/{makehoach}',[
     'as' => 'seat.select',
     'uses' => 'CineController@seatSelect'

@@ -74,6 +74,9 @@
             </div>
         </div>
         <div id="loadingRipple" style="display: none" class="lds-ripple"><div></div><div></div></div>
+
+        <!-- Input hidden -->
+        <input id="idMovie" type="hidden" value="{{ (isset($idMovie)) ? $idMovie : '' }}">
     </div>
 @endsection
 
@@ -85,6 +88,7 @@
     <script>
         var selectedCine = {};
         var cinemasList = [];
+        var idMovie = $('#idMovie').val();
         function handleCineClick(element) {
             var idCine = $(element).attr('idCine');
             selectedCine = cinemasList.find(function (cine) {
@@ -100,7 +104,13 @@
                     border: 'unset'
                 }
             });
-            var promise = getShowByCine(idCine);
+            var promise = null;
+            //kiem tra lay danh sach ke hoach chieu theo phim hay rap
+            if (idMovie !== ''){
+                promise = getShowByCineAndMovie(idCine, idMovie);
+            }else {
+                promise = getShowByCine(idCine);
+            }
             promise.then(function (res) {
                 console.log(res.data);
                 $('#tenRap').text(selectedCine.tenrap);
@@ -158,6 +168,14 @@
         function getShowByCine(idCine) {
             if (idCine != null && typeof idCine !== 'undefined'){
                 return axios.get('/api/getShowByCine/'+idCine);
+            }else {
+                return null;
+            }
+        }
+
+        function getShowByCineAndMovie(idCine, idMovie) {
+            if (idCine != null && typeof idCine !== 'undefined'){
+                return axios.get('/api/getShowByCineAndMovie/'+idCine+'/'+idMovie);
             }else {
                 return null;
             }
