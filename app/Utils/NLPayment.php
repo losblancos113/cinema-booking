@@ -14,9 +14,9 @@ class NLPayment
     // Địa chỉ thanh toán hoá đơn của NgânLượng.vn
     public $nganluong_url = 'https://sandbox.nganluong.vn:8088/nl30/checkout.php';
     // Mã website của bạn đăng ký trong chức năng tích hợp thanh toán của NgânLượng.vn.
-    public $merchant_site_code = '45951'; //100001 chỉ là ví dụ, bạn hãy thay bằng mã của bạn
+    public $merchant_site_code = '46034'; //100001 chỉ là ví dụ, bạn hãy thay bằng mã của bạn
     // Mật khẩu giao tiếp giữa website của bạn và NgânLượng.vn.
-    public $secure_pass= '5ad40d6dda48322a5824a026737ea96d'; //d685739bf1 chỉ là ví dụ, bạn hãy thay bằng mật khẩu của bạn
+    public $secure_pass= '2e2cbb5e3564dfa505d666ddccd99dcd'; //d685739bf1 chỉ là ví dụ, bạn hãy thay bằng mật khẩu của bạn
     // Nếu bạn thay đổi mật khẩu giao tiếp trong quản trị website của chức năng tích hợp thanh toán trên NgânLượng.vn, vui lòng update lại mật khẩu này trên website của bạn
     public $affiliate_code = ''; //Mã đối tác tham gia chương trình liên kết của NgânLượng.vn
 

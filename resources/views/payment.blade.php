@@ -74,12 +74,12 @@
             @csrf
             <div id="tt-checkout-method" class="pull-left">
                 <h2>Chọn phương thức thanh toán:</h2>
-                <div class="radio">
+                <!--<div class="radio">
                     <label>
                         <input type="radio" name="paymentMethod" id="baoKim" value="1" checked>
                         <img src="https://www.baokim.vn/cdn/x_developer/module/baokim_btn/thanhtoanantoan-l.png"/>
                     </label>
-                </div>
+                </div>-->
                 <div class="radio">
                     <label>
                         <input type="radio" name="paymentMethod" id="nganLuong" value="2">

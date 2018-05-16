@@ -27,24 +27,16 @@
             @foreach($now_showing as $movie)
             <div class="item">
                 <div class="w3l-movie-gride-agile w3l-movie-gride-slider ">
-                    <a href="{{ route('movie.detail', $movie->maphim) }}" class="hvr-sweep-to-bottom"><img src="{{ $movie->anhphim }}" title="{{ $movie->tenphim }}" class="img-responsive" alt=" " />
-                        <div class="w3l-action-icon"><i class="fa fa-play-circle-o" aria-hidden="true"></i></div>
+                    <a href="{{ route('movie.detail', $movie->maphim) }}" ><img src="{{ $movie->anhphim }}" title="{{ $movie->tenphim }}" class="img-responsive"  />
+                        
                     </a>
                     <div class="mid-1 agileits_w3layouts_mid_1_home">
                         <div class="w3l-movie-text">
-                            <h6><a href="single.html">{{ $movie->tenphim }}</a></h6>
+                            <h6><a href="{{ route('movie.detail', $movie->maphim) }}">{{ $movie->tenphim }}</a></h6>
                         </div>
-                        <div class="mid-2 agile_mid_2_home">
+                        <div class="w3l-movie-text">
                             <p>{{ $movie->ngaykhoichieu }}</p>
-                            <div class="block-stars">
-                                <ul class="w3l-ratings">
-                                    <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star-half-o" aria-hidden="true"></i></a></li>
-                                </ul>
-                            </div>
+                            
                             <div class="clearfix"></div>
                         </div>
                     </div>
@@ -64,24 +56,16 @@
     @foreach($coming_soon as $movie)
     <div class="wthree_agile-requested-movies">
         <div class="col-md-2 w3l-movie-gride-agile requested-movies">
-            <a href="{{ route('movie.detail', $movie->maphim) }}" class="hvr-sweep-to-bottom"><img src="{{ $movie->anhphim }}" title="{{ $movie->tenphim }}" class="img-responsive" alt=" ">
-                <div class="w3l-action-icon"><i class="fa fa-play-circle-o" aria-hidden="true"></i></div>
+            <a href="{{ route('movie.detail', $movie->maphim) }}" ><img src="{{ $movie->anhphim }}" title="{{ $movie->tenphim }}" class="img-responsive" alt=" ">
+                
             </a>
-            <div class="mid-1 agileits_w3layouts_mid_1_home">
+            <div class="mid-1 agileits_w3layouts_mid_1_home" >
                 <div class="w3l-movie-text">
-                    <h6><a href="single.html">{{ $movie->tenphim }}</a></h6>
+                    <h6><a href="{{ route('movie.detail', $movie->maphim) }}">{{ $movie->tenphim }}</a></h6>
                 </div>
-                <div class="mid-2 agile_mid_2_home">
-                    <p>{{ $movie->ngaykhoichieu }}</p>
-                    <div class="block-stars">
-                        <ul class="w3l-ratings">
-                            <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-                            <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-                            <li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
-                            <li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
-                            <li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
-                        </ul>
-                    </div>
+                <div class="w3l-movie-text">
+                    <p class=""> {{ $movie->ngaykhoichieu }}</p>
+                    
                     <div class="clearfix"></div>
                 </div>
             </div>

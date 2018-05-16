@@ -25,4 +25,5 @@ class GiaoDich extends Model
         $totalAmount = $show->giave * count($seat_book);
         return $totalAmount;
     }
+     
 }

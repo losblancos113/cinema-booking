@@ -51,6 +51,8 @@ class UserController extends Controller
                 $user->sodienthoai = $sodienthoai;
                 $user->socmnd = $cmnd;
                 $user->save();
+                //luu user moi cap nhat vao session
+                $request->session()->put('user', $user);
                 return redirect()->route("user.info",["user" => $user, "update" => 1]);
             }
         }else{

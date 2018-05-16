@@ -21,20 +21,26 @@ class LoginController extends Controller
 
     use AuthenticatesUsers;
 
+    /**
+     * @param Request $request
+     * @param $user
+     * @return \Illuminate\Http\RedirectResponse
+     * Ham chay sau khi da check login ok. Lay thong tin user vua dang nhap dua vao session
+     */
     protected function authenticated(Request $request, $user)
     {
 //        if ( $user->isAdmin() ) {// do your margic here
 //            return redirect()->route('dashboard');
 //        }
         $request->session()->put('user', $user);
-        return redirect()->back();;
+//        return redirect()->back();
     }
     /**
      * Where to redirect users after login.
      *
      * @var string
      */
-//    protected $redirectTo = '/home';
+    protected $redirectTo;
 
     /**
      * Create a new controller instance.
@@ -43,6 +49,7 @@ class LoginController extends Controller
      */
     public function __construct()
     {
+        $this->redirectTo = url()->previous();
         $this->middleware('guest')->except('logout');
     }
 }

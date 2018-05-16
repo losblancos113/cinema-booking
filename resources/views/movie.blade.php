@@ -16,15 +16,7 @@
     <!--//web-fonts-->
 @endsection
 @section("content-inner-section")
-    <div class="w3_breadcrumb">
-        <div class="breadcrumb-inner">
-            <ul>
-                <li><a href="index.html">Home</a><i>//</i></li>
-
-                <li>{{ Route::currentRouteName() }}</li>
-            </ul>
-        </div>
-    </div>
+    
     <!-- //breadcrumb -->
     <!--/content-inner-section-->
     <div class="w3_content_agilleinfo_inner">
@@ -34,7 +26,7 @@
                 {{--<p class="w3ls_head_para">$movie->motaphim</p>--}}
             </div>
             <div class="latest-news-agile-info">
-                <div class="col-md-8 latest-news-agile-left-content">
+                <div class="col-md-12 latest-news-agile-left-content">
                     <div class="single video_agile_player">
 
                         <div class="video-grid-single-page-agileits">
@@ -51,78 +43,7 @@
                     </div>
 
                 </div>
-                <div class="col-md-4 latest-news-agile-right-content">
-
-
-                    <h4 class="side-t-w3l-agile">Latest <span>Trailer</span></h4>
-                    <div class="video_agile_player sidebar-player">
-                        <div class="video-grid-single-page-agileits">
-                            <div data-video="fNKUgX8PhMA" id="video1"><img src="/images/22.jpg" alt=""
-                                                                           class="img-responsive">
-                                <div id="play"></div>
-                            </div>
-                        </div>
-
-
-                        <div class="player-text side-bar-info">
-                            <p class="fexi_header">Me Before You </p>
-                            <p class="fexi_header_para"><span class="conjuring_w3">Story Line<label>:</label></span>Me
-                                Before You Official Trailer #2 (2016) - Emilia Clarke, Sam Claflin Movie HD
-
-                                A girl in a small town forms an unlikely....</p>
-                            <p class="fexi_header_para"><span>Release On<label>:</label></span>Feb 3, 2016 </p>
-                            <p class="fexi_header_para">
-                                <span>Genres<label>:</label> </span>
-                                <a href="genre.html">Drama</a> |
-                                <a href="genre.html">Adventure</a> |
-                                <a href="genre.html">Family</a>
-                            </p>
-                            <p class="fexi_header_para fexi_header_para1"><span>Star Rating<label>:</label></span>
-                                <a href="#"><i class="fa fa-star" aria-hidden="true"></i></a>
-                                <a href="#"><i class="fa fa-star" aria-hidden="true"></i></a>
-                                <a href="#"><i class="fa fa-star-half-o" aria-hidden="true"></i></a>
-                                <a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a>
-                                <a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a>
-                            </p>
-                        </div>
-
-                    </div>
-                    <h4 class="side-t-w3l-agile">Latest <span>Trailer</span></h4>
-                    <div class="video_agile_player sidebar-player">
-                        <div class="video-grid-single-page-agileits">
-                            <div data-video="fNKUgX8PhMA" id="video1"><img src="/images/22.jpg" alt=""
-                                                                           class="img-responsive">
-                                <div id="play"></div>
-                            </div>
-                        </div>
-
-
-                        <div class="player-text side-bar-info">
-                            <p class="fexi_header">Me Before You </p>
-                            <p class="fexi_header_para"><span class="conjuring_w3">Story Line<label>:</label></span>Me
-                                Before You Official Trailer #2 (2016) - Emilia Clarke, Sam Claflin Movie HD
-
-                                A girl in a small town forms an unlikely....</p>
-                            <p class="fexi_header_para"><span>Release On<label>:</label></span>Feb 3, 2016 </p>
-                            <p class="fexi_header_para">
-                                <span>Genres<label>:</label> </span>
-                                <a href="genre.html">Drama</a> |
-                                <a href="genre.html">Adventure</a> |
-                                <a href="genre.html">Family</a>
-                            </p>
-                            <p class="fexi_header_para fexi_header_para1"><span>Star Rating<label>:</label></span>
-                                <a href="#"><i class="fa fa-star" aria-hidden="true"></i></a>
-                                <a href="#"><i class="fa fa-star" aria-hidden="true"></i></a>
-                                <a href="#"><i class="fa fa-star-half-o" aria-hidden="true"></i></a>
-                                <a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a>
-                                <a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a>
-                            </p>
-                        </div>
-
-                    </div>
-
-                    <div class="clearfix"></div>
-                </div>
+                
                 <div class="clearfix"></div>
             </div>
 

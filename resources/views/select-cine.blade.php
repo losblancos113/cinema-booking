@@ -151,7 +151,7 @@
                     html+= '<div class="phim-img"><img src="'+ phim.anhphim +'"></div>';
                     html+= '<div class="phim-show-time">'
                     shows.forEach(show => {
-                        html+= '<a href="cine/seat/' + show.makehoachchieu + '" class="btn btn-default">'+ show.giobatdau +'</a>';
+                        html+= '<a href="/cine/seat/' + show.makehoachchieu + '" class="btn btn-default">'+ show.giobatdau +'</a>';
                     });
                     html+= '</div>';
                     html+= '</div>';
@@ -182,7 +182,7 @@
         }
 
         function handleDistrictClick(element) {
-            $('a').remove('.cine');
+            $('#list-cine .cine').remove();
             $('.lds-hourglass').show();
             var maQuanHuyen = $(element).attr('ma-quan-huyen');
             var promise = getCine(maQuanHuyen);
