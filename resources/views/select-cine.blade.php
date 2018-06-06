@@ -20,9 +20,9 @@
     <div class="w3_breadcrumb">
         <div class="breadcrumb-inner">
             <ul>
-                <li><a href="index.html">Home</a><i>//</i></li>
+                <li><a href="{{ route("home.index") }}">Home</a><i></i></li>
 
-                <li>Single</li>
+            
             </ul>
         </div>
     </div>
@@ -65,7 +65,7 @@
 
         <div class="show-container" style="display: none" id="show-container">
             <h2 class="cine-header" id="tenRap"></h2>
-            <h3 class="cine-header" id="diaChiRap"></h3>
+            <h3 cl   n                                                                                                                                                                                                                                                                           ass="cine-header" id="diaChiRap"></h3>
             <div class="bg-primary show-list-header">Lịch Chiếu</div>
             <div class="list-show">
                 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">

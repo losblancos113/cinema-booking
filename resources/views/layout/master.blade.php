@@ -39,8 +39,8 @@
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Phim <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="genre.html">Đang Chiếu</a></li>
-                                    <li><a href="genre.html">Sắp Chiếu</a></li>
+                                    <li><a href="#section41">Đang Chiếu</a></li>
+                                    <li><a href="#section42">Sắp Chiếu</a></li>
                                     <div class="clearfix"></div>
                                 </ul>
                             </li>
@@ -58,9 +58,12 @@
                         </ul> <!-- cd-header-buttons -->
                     </div>
                     <div id="cd-search" class="cd-search">
-                        <form action="#" method="post">
-                            <input name="Search" type="search" placeholder="Search...">
+                        <form action="searchmovie" method="post">
+                            <input type="hidden" name="_token" value="{{csrf_token()}}"/>
+                            <input name="key" type="text" placeholder="Search...">
+                            <button type ="submit" class ="btn btn-default"> Tìm </button>
                         </form>
+                       
                     </div>
                 </div>
             </div>
@@ -140,38 +143,7 @@
 <!--/footer-bottom-->
 <div class="contact-w3ls" id="contact">
     <div class="footer-w3lagile-inner">
-        <h2>Sign up for our <span>Newsletter</span></h2>
-        <p class="para">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vitae eros eget tellus
-            tristique bibendum. Donec rutrum sed sem quis venenatis.</p>
-        <div class="footer-contact">
-            <form action="#" method="post">
-                <input type="email" name="Email" placeholder="Enter your email...." required=" ">
-                <input type="submit" value="Subscribe">
-            </form>
-        </div>
-        <div class="footer-grids w3-agileits">
-            <div class="col-md-2 footer-grid">
-                
-            </div>
-            <div class="col-md-2 footer-grid">
-    
-                
-            </div>
-
-
-            <div class="col-md-2 footer-grid">
-                
-
-
-            </div>
-            <div class="col-md-2 footer-grid">
-              
-
-
-            </div>
         
-            </div>
-            <div class="clearfix"> </div>
            
         </div>
         <h3 class="text-center follow">Connect <span>Us</span></h3>
@@ -187,7 +159,7 @@
 
 </div>
 <div class="w3agile_footer_copy">
-    <p>© 2017 Movies Pro<</p>
+    <p>© 2018 ABC PHIM</p>
 </div>
 <a href="#home" id="toTop" class="scroll" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
 

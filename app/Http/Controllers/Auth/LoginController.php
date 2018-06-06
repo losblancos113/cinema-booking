@@ -33,13 +33,14 @@ class LoginController extends Controller
 //            return redirect()->route('dashboard');
 //        }
         $request->session()->put('user', $user);
-//        return redirect()->back();
+ //       return redirect()->back();
     }
     /**
      * Where to redirect users after login.
      *
      * @var string
      */
+//    protected $redirectTo = '/home';
     protected $redirectTo;
 
     /**

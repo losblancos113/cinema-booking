@@ -16,43 +16,21 @@ use App\Hangphim;
 use App\Loaiphim;
 use App\KeHoachChieu;
 use App\Giaodich;
-use App\ChiTietGiaoDich;
+
+use Illuminate\Support\Facades\DB;
 use Session;
+use App\ChiTietGiaoDich as OrderDetail;
 
 
 class PageAdminController extends Controller
 {
-    public function loginadmin(Request $request)
-    {
-        if ($request->isMethod('post')) {
-            $data = $request->input();
-            if (Auth::attempt(['email' => $data['email'], 'password' => $data['password'], 'quyen' => '2'])) {
-                $request->session()->put('data', $data);
-                return redirect('admin/');
-            } else {
-                return redirect('admin/login');
 
-            }
-
-        }
-        return view('admin.admin_login');
-
-    }
-
-    public function logout()
-    {
-        Session::   flush();
-
-        return redirect('admin/login');
-
-
-    }
 
     public function dashboard()
     {
         $data = session()->get("data");
 
-        return view('admin.dashboard');
+        return view('admin.chart');
 
 
     }
@@ -144,12 +122,30 @@ class PageAdminController extends Controller
 
     public function postaddroom(Request $request)
     {
-        $room = new Phong;
-
-        $room->marap = $request->cine;
-        $room->tenphong = $request->nameroom;
-        $room->soluongghe = $request->numberseat;
-        $room->save();
+        $room = null;
+        DB::transaction(function () use ($request, &$room){
+            $room = new Phong();
+            $room->marap = $request->input('cine');
+            $room->tenphong = $request->input('nameroom');
+            //lay ra so luong ghe
+            $number_row = $request->input('number_row');
+            $number_seat_per_row = $request->input('number_seat_per_row');
+            $so_luong_ghe = $number_row * $number_seat_per_row;
+            $room->soluongghe = $so_luong_ghe;
+            $room->save();
+            //tao ghe
+            for ($i = 1; $i <= $number_row; $i++){
+                for ($j = 1; $j <= $number_seat_per_row; $j++){
+                    $ghe = new Ghe();
+                    $ghe->tenghe = $i.'_'.$j;
+                    $ghe->maphong = $room->maphong;
+                    $ghe->trangthai = 0;
+                    $ghe->hang = $i;
+                    $ghe->soghe = $j;
+                    $ghe->save();
+                }
+            }
+        });
         return redirect()->route('listroom', [$room->marap]);
 
     }
@@ -533,7 +529,7 @@ class PageAdminController extends Controller
             $show = KeHoachChieu::where('makehoachchieu', $makehoach)->first();
             $seats = Ghe::where('maphong', $show->maphong)->orderBy('hang', 'asc')->orderBy('tenghe', 'asc')->get();
             $seat_chart = $this->generateSeatChart($seats);
-            return view('seat', ['show' => $show, 'seats' => $seats, 'seat_chart' => $seat_chart]);
+            return view('admin.bookticket.seat', ['show' => $show, 'seats' => $seats, 'seat_chart' => $seat_chart]);
         } else {
             return \redirect()->guest('login');
         }
@@ -569,6 +565,54 @@ class PageAdminController extends Controller
             return $map;
         } else {
             return null;
+        }
+    }
+
+    public function selectPaymentMethod(Request $request)
+    {
+        if ($request->isMethod("post")) {
+            $makehoach = $request->input("makehoach");
+            $maKH = $request->input("makhachhang");
+            $ghe_da_dat = $request->input("ghedat");
+            $seat_book = Ghe::whereIn("maghe", json_decode($ghe_da_dat))->get();
+            $show = KeHoachChieu::where("makehoachchieu", $makehoach)->first();
+            $room = Phong::where("maphong", $show->maphong)->first();
+            //tinh tong tien
+            $totalAmount = $show->giave * count($seat_book);
+            //tao thong tin giao dich
+            $giaodich = new \stdClass();
+            $giaodich->makehoach = $makehoach;
+            $giaodich->makhachhang = $maKH;
+            $giaodich->ghe_da_dat = $seat_book;
+            $giaodich->tong_tien = $totalAmount;
+            $giaodich->show = $show;
+            $giaodich->room = $room;
+            //tao giao dich trong db
+            $giaodichDb = new GiaoDich();
+            $giaodichDb->makehoach = $makehoach;
+            $giaodichDb->makhachhang = $maKH;
+            $giaodichDb->codegiaodich = strtoupper(uniqid());
+            $giaodichDb->trangthai = 1;
+            $giaodichDb->save();
+            //tao chi tiet giao dich
+            for ($i = 0; $i < count($seat_book); $i++) {
+                $chi_tiet_giao_dich = new OrderDetail();
+                $chi_tiet_giao_dich->codegiaodich = $giaodichDb->codegiaodich;
+                $chi_tiet_giao_dich->maghe = $seat_book[$i]->maghe;
+                $chi_tiet_giao_dich->save();
+            }
+
+
+            $giaodich->codegiaodich = $giaodichDb->codegiaodich;
+
+            $ghe_da_dat = OrderDetail::where('codegiaodich', $chi_tiet_giao_dich->codegiaodich)->get();
+
+            //update trang thai ghe da ban
+            foreach ($ghe_da_dat as $ghe) {
+                Ghe::where('maghe', $ghe->maghe)
+                    ->update(['trangthai' => 1]);
+            }
+            return view("admin.bookticket.payment", ["giao_dich" => $giaodich]);
         }
     }
 }

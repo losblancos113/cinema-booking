@@ -62,7 +62,7 @@ class PaymentController extends Controller
             $urlRedirect = "/";
             if ("1" == $paymentMethod){
                 $payment = new Payment();
-                $urlRedirect = $payment->createRequestUrl($codegiaodich, $totalAmount, "ascbhsc", "http://abcphim.site", "http://abcphim.site/a", "HMT", "acb@123.com", "0969896525", "123 pho hue");
+                $urlRedirect = $payment->createRequestUrl($codegiaodich, $totalAmount, "ascbhsc", "http://abcphim.site", "http://abcphim.site/a", "PAT", "acb@123.com", "0969896525", "123 pho hue");
             }else if ("2" == $paymentMethod){
                 $payment = new NLPayment();
                 $urlRedirect = $payment->buildCheckoutUrl(config("app.url")."/payment/info/".$codegiaodich, "toaiphan86@gmail.com", "thanh toan ve xem phim", $codegiaodich, $totalAmount);
@@ -126,9 +126,5 @@ class PaymentController extends Controller
         $giaodich->trangthai = 2;
         $giaodich->save();
         return view('payment_error');
-    }
-
-    public function login(){
-        return view('auth.login_admin');
     }
 }

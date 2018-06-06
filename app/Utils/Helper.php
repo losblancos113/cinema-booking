@@ -31,7 +31,6 @@ function composeDataForViewByCine($rawdata){
         return $rawdata;
     }
 }
-
 function checkPermission($permissions){
     $userAccess = getMyPermission(auth()->user()->quyen);
     foreach ($permissions as $key => $value) {

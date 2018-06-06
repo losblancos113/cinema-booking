@@ -39,7 +39,7 @@
 
 
                     <div class="response">
-                        <a href="{{ route('cinema.movie.select', ['idMovie' => $movie->maphim]) }}" class="btn btn-primary btn-lg">Mua Vé</a>
+                        <a href="{{ route('cinema.movie.select', ['idMovie' => $movie->maphim]) }}" class="btn btn-primary btn-lg">Đặt Vé</a>
                     </div>
 
                 </div>

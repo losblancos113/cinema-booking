@@ -17,7 +17,7 @@
                         <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                        <li><a ><i class="fa fa-user fa-fw"></i>{{ session()->get('user')->name }}</a>
+                        <li><a ><i class="fa fa-user fa-fw">{{ session()->get('user')->name }}</i></a>
                         </li>
                         <li><a href="/user/info"><i class="fa fa-gear fa-fw"></i> Cá nhân</a>
                         </li>

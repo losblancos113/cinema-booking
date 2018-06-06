@@ -25,9 +25,13 @@
                                 <label>Tên phòng</label>
                                 <input class="form-control" name="nameroom" placeholder="Nhập tên phòng" />
                             </div>
+                            <div class="form-group">
+                                <label>Số hàng</label>
+                                <input type="number" class="form-control" name="number_row" placeholder="Nhập số hàng ghế" />
+                            </div>
                              <div class="form-group">
-                                <label>Số lượng ghế</label>
-                                <input class="form-control" name="numberseat" placeholder="Nhập số lượng ghế" />
+                                <label>Số ghế mỗi hàng</label>
+                                <input type="number" class="form-control" name="number_seat_per_row" placeholder="Nhập số lượng ghế mỗi hàng" />
                             </div>
                             
                             

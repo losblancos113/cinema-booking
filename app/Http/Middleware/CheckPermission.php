@@ -17,8 +17,9 @@ class CheckPermission
     {
         $permission = explode('|', $permission);
 
-
+        //neu thoa man dieu kien permission
         if(checkPermission($permission)){
+            $request->session()->put('permission', $permission);
             return $next($request);
         }
 
