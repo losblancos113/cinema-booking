@@ -123,6 +123,7 @@ class PageAdminController extends Controller
     public function postaddroom(Request $request)
     {
         $room = null;
+        //tao transaction khi xay ra loi insert ghe thi se tu dong rollback ko tao ra phong nua
         DB::transaction(function () use ($request, &$room){
             $room = new Phong();
             $room->marap = $request->input('cine');
