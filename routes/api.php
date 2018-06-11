@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use App\Rap as Rap;
 use App\Phong as Phong;
 use App\KeHoachChieu as KeHoachChieu;
+use App\Ghe;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -89,4 +90,29 @@ Route::get('/getShowByCineAndMovie/{idCine}/{idMovie}', function ($idCine, $idMo
     }else{
         return null;
     }
+});
+
+Route::get('checkSeatAvailable/{idSeat}', function ($idSeat){
+    $result = false;
+    if ($idSeat != null){
+        $ghe = Ghe::find($idSeat);
+        if ($ghe != null){
+            if ($ghe->trangthai == 0){
+                $result = true;
+            }
+        }
+    }
+    return $result;
+});
+
+Route::get('getSeatUnavailable/{maphong}', function ($maphong){
+    //api lay ra cac ghe da dat theo ma phong
+    $seats = Ghe::where('maphong', $maphong)->orderBy('hang','asc')->orderBy('tenghe','asc')->get();
+    $result = [];
+    for ($i = 0; $i < count($seats); $i++){
+        if ($seats[$i]->trangthai != 0){
+            array_push($result, $seats[$i]);
+        }
+    }
+    return $result;
 });

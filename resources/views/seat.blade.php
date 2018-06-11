@@ -17,6 +17,12 @@
     <link href="/css/style2.css" rel="stylesheet" type="text/css" media="all" />
 @endsection
 @section("content-inner-section")
+    @if($errors->any())
+        <div class="alert alert-danger alert-dismissible">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            {{$errors->first()}}
+        </div>
+    @endif
     <div class="demo">
         <div id="seat-map">
             <div class="front">SCREEN</div>
@@ -54,6 +60,7 @@
         var price = {!! $show->giave !!}; //price
         var seats = {!! $seats !!};
         var seatChart = {!! json_encode($seat_chart) !!};
+        var maPhong = {{ $show->maphong }};
         $(document).ready(function() {
             var $cart = $('#selected-seats'), //Sitting Area
                 $counter = $('#counter'), //Votes
@@ -71,7 +78,7 @@
                     node : $('#legend'),
                     items : [
                         [ 'a', 'available',   'Available' ],
-                        [ 'a', 'unavailable', 'Sold'],
+                        [ 'D', 'unavailable', 'Sold'],
                         [ 'a', 'selected', 'Selected']
                     ]
                 },
@@ -106,7 +113,18 @@
             //sold seat
             var soldSeat = getSoldSeats();
             sc.get(soldSeat).status('unavailable');
-
+            //update tinh trang ghe 5s/lan
+            let frequency = 5 * 1000;
+            setInterval(function () {
+                console.log('Update trang thai ghe');
+               axios.get('/api/getSeatUnavailable/'+maPhong).then(function (res) {
+                   let seatUnavailables = res.data;
+                   for (let i = 0; i < seatUnavailables.length; i++){
+                       let seatUn = seatUnavailables[i];
+                       sc.status(seatUn.tenghe.trim(), 'unavailable');
+                   }
+               });
+            }, frequency);
         });
         //sum total money
         function recalculateTotal(sc) {

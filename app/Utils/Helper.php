@@ -56,3 +56,35 @@ function getMyPermission($id)
             break;
     }
 }
+
+function generateSeatChart($seats){
+    $map = [];
+    if ($seats != null && count($seats) > 0){
+        $tmpHang = "";
+        $tmpSoGhe = "";
+        for ($i = 0; $i < count($seats); $i++){
+            $seat = $seats[$i];
+            if ($tmpHang != $seat->hang){
+                $tmpHang = $seat->hang;
+                if ($i != 0){
+                    array_push($map, $tmpSoGhe);
+                    $tmpSoGhe = "";
+                }
+                if ($seat->trangthai == 0){
+                    $tmpSoGhe .= "a";
+                }else{
+                    $tmpSoGhe .= "D";
+                }
+            }else{
+                if ($seat->trangthai == 0){
+                    $tmpSoGhe .= "a";
+                }else{
+                    $tmpSoGhe .= "D";
+                }
+            }
+        }
+        return $map;
+    }else{
+        return null;
+    }
+}

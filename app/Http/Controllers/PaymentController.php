@@ -10,6 +10,7 @@ use App\Phong;
 use App\Utils\Payment;
 use App\GiaoDich;
 use App\ChiTietGiaoDich as OrderDetail;
+use Illuminate\Support\Facades\Redirect;
 
 class PaymentController extends Controller
 {
@@ -19,6 +20,12 @@ class PaymentController extends Controller
             $maKH = $request->input("makhachhang");
             $ghe_da_dat = $request->input("ghedat");
             $seat_book = Ghe::whereIn("maghe",json_decode($ghe_da_dat))->get();
+            //kiem tra trang thai ghe truoc khi thanh toan
+            for ($i = 0; $i < count($seat_book); $i++){
+                if ($seat_book[$i]->trangthai != 0){
+                    return Redirect::back()->withErrors(['Ghế đã bị đặt trước, vui lòng chọn ghế khác']);
+                }
+            }
             $show = KeHoachChieu::where("makehoachchieu", $makehoach)->first();
             $room = Phong::where("maphong", $show->maphong)->first();
             //tinh tong tien
